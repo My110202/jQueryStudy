@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>li标签1</li>
+        <li>li标签2</li>
+        <li>li标签3</li>
+        <li>li标签4</li>
+        <li>li标签5</li>
+        <li>li标签6</li>
+        <li>li标签7</li>
+        <li>li标签8</li>
+        <li>li标签9</li>
+        <li>li标签10</li>
+    </ul>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        /* 知识点:选择器
+
+        */
+        // 隔行变色
+        $('li:even').css('backgroundColor','yellowgreen');
+        $('li:odd').css('backgroundColor','greenyellow');
+
+        // 移入变色
+        var oldColor;
+        $('li').mouseenter(function(){
+            oldColor = $(this).css('backgroundColor');
+            $(this).css('backgroundColor','red');
+        })
+        // 移出恢复原样
+        $('li').mouseleave(function(){
+            $(this).css('backgroundColor',oldColor);
+        })
+    </script>
+</body>
+</html>

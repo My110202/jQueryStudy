@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        /* 找到有type属性的 */
+        li[type] {
+            background-color: yellow;
+        }
+
+        /* 找到有属性名为type,且属性值为blue的元素 */
+        li[type='blue'] {
+            background-color: blue;
+        }
+
+        /* 找到属性值以lin开头的 */
+        li[type^='lin'] {
+            background-color: yellowgreen;
+        }
+        
+        /* 找到属性值以com结尾的 */
+        li[type$='com'] {
+            background-color: greenyellow;
+        }
+
+        li[type*='taobao'] {
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        
+        <li type>有type属性的</li>
+        <li type='blue'>有type属性,且属性值是blue的</li>
+        <li type="linliqun">林立群</li>
+        <li type="www.baidu.com">百度</li>
+        <li type="www.taobao.com">任意字段</li>
+    </ul>
+</body>
+</html>

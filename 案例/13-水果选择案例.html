@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        select {
+            width: 120px;
+            height: 350px;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="left" multiple>
+        <option>苹果</option>
+        <option>鸭梨</option>
+        <option>西瓜</option>
+        <option>橘子</option>
+        <option>荔枝</option>
+        <option>樱桃</option>
+        <option>香蕉</option>
+        <option>榴莲</option>
+        <option>菠萝蜜</option>
+        <option>黑凤梨</option>
+        <option>牛油果</option>
+    </select>
+
+    <button id="btn1"> &gt;&gt; </button>
+    <button id="btn2"> &lt;&lt; </button>
+    <button id="btn3"> &gt; </button>
+    <button id="btn4"> &lt; </button>
+
+    <select id="right" multiple></select>
+
+    <script src="./jquery-1.12.4.min.js"></script>
+
+    <script>
+    //    btn1的点击事件
+    $('#btn1').click(function(){
+        $('#left option').appendTo($('#right'));
+    })
+
+    // btn2的点击事件
+    $('#btn2').click(function(){
+        $('#right option').appendTo('#left');
+    })
+
+    // btn3的点击事件
+    $('#btn3').click(function(){
+        $('#left option:selected').appendTo('#right');
+    })
+
+    //btn4的点击事件
+    $('#btn4').click(function(){
+        $('#right option:selected').appendTo('#left');
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        用帧动画步骤：
+            1.先写一个动画剧本：怎么动
+                  剧本写在style标签里面的任何位置，但是不要写某个选择器
+
+                    @keyframes 剧本名字{
+
+                        from{}
+                        to{
+                            //里面写你想让元素变成什么样子的代码
+                        }
+                    }
+
+            2.谁要用动画，就给谁写一个animation属性
+     -->
+
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            transition: all 1s;
+
+            /* 
+                参数1：剧本名字
+                参数2：动画持续时间
+                参数3：延迟时间
+                参数4：运动曲线
+                参数5：动画次数, 如果是希望无限次，就写infinite
+                参数6：是否回来也有动画，默认回来没有，如果希望回来也有动画写一个 alternate ,回去的动画也算次数
+                参数7：动画停止后是否要停留在动画的最终位置,默认不停，要停话的加一个forwords
+                参数8：是否暂停，默认为running 不暂停  paused 暂停
+
+            */
+            animation: bigger 1s .1s linear infinite alternate forwards;
+            /* animation是一个连写属性，分开写它们分别对应以下属性 */
+            /* animation-name: 剧本名 */
+            /* animation-duration: 动画持续时间 */
+            /* animation-delay: 延迟时间 */
+            /* animation-timing-function: 运动曲线 */
+            /* animation-iteration-count: 动画次数 */
+            /* animation-direction: 是否逆播 */
+            /* animation-fill-mode: 是否停在动画结束的最终位置 */
+            /* animation-play-state: 是否暂停 */
+
+
+        }
+
+        .box:hover{
+
+            animation-play-state: paused;
+        }
+
+        @keyframes bigger{
+
+            from{}
+            to{
+
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+    
+
+        /* .box:hover{                                                                                                                                                        
+            width: 300px;
+            height: 300px;
+        } */
+
+
+    </style>
+</head>
+<body>
+    <input type="button" value="暂停"  id="btn1">
+    <input type="button" value="继续"  id="btn2">
+    <div class="box"></div>
+
+    <script>
+        //找到box
+        var box = document.querySelector('.box');
+        // 给按钮加点击事件
+        document.getElementById('btn1').onclick = function(){
+            //animation-play-state: 
+            box.style.aa = "paused";
+        }
+
+        document.getElementById('btn2').onclick = function(){
+            //animation-play-state: 
+            box.style.animationPlayState = "running";
+        }
+    </script>
+</body>
+</html>

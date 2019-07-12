@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>复制</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background: blue;
+            text-align: center;
+            line-height: 200px;
+            margin: 0 20px 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ulList">
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+        <li>什么都看不见</li>
+    </ul>
+
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        // 内部有一个隐式迭代，内部有个遍历，把所有都改成0.5
+        // $('li').css('opacity', 0.5);
+
+        // 但我现在不想让每个都是0.5，而应该是每一个都不太一样
+        // 所以就需要自己遍历，传入一个函数，函数里的第一个参数被遍历到的下标，第二个参数被遍历到的元素（DOM对象）
+        // 你有10个li，这个函数调用10次，index和ele分别是当前遍历到的下标和元素
+       $('li').each(function(index,ele){
+        $(ele).css('opacity',(index+1)/10);
+       })
+    </script>
+</body>
+
+</html>

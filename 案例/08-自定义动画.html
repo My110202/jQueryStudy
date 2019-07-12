@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="变宽变高向右走">
+    <div class="box"></div>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        // 调用animate函数
+        $('input').click(function () {
+            $('.box').animate({
+                'width': 300,
+                'height': 300,
+                'left': 500,
+                'top': 500
+            }, 1000, function () {
+                $('.box').animate({
+                    'width': 150,
+                    'height': 150,
+                    'left': 800,
+                    'top': 20
+                },1000);
+            });
+
+            // alert('点击了');
+        })
+    </script>
+</body>
+
+</html>
