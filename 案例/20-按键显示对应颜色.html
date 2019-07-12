@@ -42,7 +42,20 @@
 
     <script>
 
-       
+        // 给body键盘按下事件
+        $('body').keydown(function(e){
+            console.log(e.keyCode);
+            // 根据keyCode显示对应的颜色
+            // r:82  g:71  b:66  p:80  y:89  o:79  
+            switch(e.keyCode) {
+                case 82:$('#bgChange').css('backgroundColor','red');break;
+                case 71:$('#bgChange').css('backgroundColor','green');break;
+                case 66:$('#bgChange').css('backgroundColor','blue');break;
+                case 80:$('#bgChange').css('backgroundColor','purple');break;
+                case 89:$('#bgChange').css('backgroundColor','yellow');break;
+                case 79:$('#bgChange').css('backgroundColor','orange');break;
+            }
+        })
     </script>
 
 </body>
