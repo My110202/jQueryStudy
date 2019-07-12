@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .container .video {
+            width: 1000px;
+            height: 600px;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container .content {
+            background: #333;
+            height: 30px;
+            padding: 10px;
+        }
+
+        .container .content input {
+            float: right;
+            border: none;
+            outline: none;
+            padding: 0 15px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        /*  video它跟img特点一样，不给宽高就用视频宽高，如果只给宽，自动按比例能算出高
+            embed需要同时给宽度和高度
+         */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="video">
+            <video width="1000" height="600" src="images/video/1.mp4" controls></video>
+        </div>
+        <div class="content">
+            <input type="button" value="发射">
+            <input type="text">
+        </div>
+    </div>
+
+    <!-- 
+        核心思想:当点击发送弹幕按钮的时候,就新建一个span,添加到video所在的div里,并且给span定位,随机定位,随机颜色,从右边动画到左边
+    -->
+
+    <script src="./jquery-1.12.4.min.js"></script>
+
+    <script>
+        // 产生随机颜色
+        function randomColor() {
+            var r = parseInt(Math.random() * 256);
+            var g = parseInt(Math.random() * 256);
+            var b = parseInt(Math.random() * 256);
+
+            return 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+
+        // 给发射按钮添加点击事件
+        $(':button').click(function () {
+            // 生成随机的高度
+            var randomTop = Math.random()*($('.video').height());
+            console.log(randomTop);
+            // 创建新的span
+            $('<span></span>').text($(':text').val()).css({
+                color: randomColor(),
+                position:'absolute',
+                top:randomTop,
+                right:0
+            }).appendTo($('.video')).end().animate({left:-50},4000,function(){
+                // 移动到左边之后,就清空span
+                $(this).remove();
+            });
+
+            // 创建完span,就清空文本框的内容
+            $(':text').val('');
+        })
+
+        // 给文本框添加键盘按下事件
+        $(':text').keydown(function(e){
+            if(e.keyCode == 13) {
+                // 如果按下的是enter键,就触发发射按钮的点击事件
+                $(':button').trigger('click');
+            }
+        })
+    </script>
+</body>
+
+</html>
